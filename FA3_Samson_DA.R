@@ -1,0 +1,39 @@
+library(ggplot2)
+
+# 1. Create histogram using layer function
+s <- ggplot(data = diamonds) +
+  layer(
+    data = diamonds,
+    mapping = aes(x = carat),
+    stat = "bin",
+    geom = "bar",
+    position = "identity"  # Adding position parameter
+  )
+
+print(s)
+
+# 2. Create histogram using geom_line
+s_line <- ggplot(data = diamonds) +
+  geom_line(mapping = aes(x = carat), stat = "bin")
+
+print(s_line)
+
+# Create histogram using geom_point
+s_point <- ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat), stat = "bin")
+
+print(s_point)
+
+# 3. Create histogram with aesthetic mapping
+l <- ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = carat, fill = color), stat = "bin")
+
+print(l)
+
+
+# 4. Histogram with dodge position adjustment
+l_dodge <- ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = carat, fill = color), stat = "bin", position = "dodge")
+
+print(l_dodge)
+
